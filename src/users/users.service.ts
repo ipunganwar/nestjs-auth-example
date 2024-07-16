@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import { FindUsersDto } from './dto/find-users.dto';
 
 @Injectable()
 export class UsersService {
@@ -29,7 +30,7 @@ export class UsersService {
     return newUser;
   }
 
-  async findMany() {
+  async findMany(dto: FindUsersDto) {
     return this.userRepository.createQueryBuilder('users').getMany();
   }
 
